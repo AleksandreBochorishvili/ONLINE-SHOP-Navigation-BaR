@@ -1,0 +1,118 @@
+$primary-color: #222;
+$accent-color: #e74c3c;
+$text-color: white;
+$font-size: 40px;
+$padding: 20px;
+$primary-dark: #181717;
+$light-text: #ffffff;
+$transition-curve: cubic-bezier(0.23, 1, 0.32, 1);
+
+@mixin flex-center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.header {
+  @include flex-center();
+  justify-content: space-between;
+  background-color: $primary-color;
+  padding: $padding 40px;
+
+  .logo {
+    color: $accent-color;
+    font-size: 24px;
+    font-weight: bold;
+    img {
+        padding-bottom: 12px;
+        margin-bottom: 12px;
+    }
+  }
+}
+nav {
+  ul {
+    @include flex-center();
+    gap: 24px;
+    list-style: none;
+  }
+
+  li {
+    a {
+      color: $text-color;
+      text-decoration: none;
+      font-size: $font-size;
+      &:hover {
+        color: $accent-color;
+      }
+    }
+  }
+}
+.search-div {
+  display: flex;
+  width: 900px;
+  height: 80px;
+
+  .search {
+    max-width: 800px;
+    width: 100%;
+    padding: $padding;
+    font-size: $font-size;
+    border: 2px solid white;
+    border-radius: 24px 0 0 24px;
+    cursor: pointer;
+  }
+  .search-btn {
+    width: 70px;
+    background: rgb(122, 122, 122);
+    border-radius: 0 24px 24px 0;
+  }
+}
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $padding;
+  gap: 15px;
+  background-color: $primary-dark;
+  outline: 3px $primary-dark solid;
+  outline-offset: -3px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: all 300ms $transition-curve;
+  .text {
+    color: $light-text;
+    font-weight: 700;
+    font-size: 40px;
+    margin: 0;
+    transition: 300ms;
+  }
+  svg {
+    transition: transform 300ms $transition-curve;
+    path {
+      transition: 300ms;
+    }
+  }
+  &:hover {
+    background-color: rgb(77, 77, 77);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba($primary-dark, 0.2);
+    .text {
+      color: $primary-dark;
+    }
+    svg {
+      transform: translateX(3px) rotate(-8deg);
+      path {
+        fill: $primary-dark;
+      }
+    }
+  }
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba($primary-dark, 0.2);
+  }
+}
